@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Website Security Scanner | Protect Your Site | InternetSecure.org</title>
+    <script async="" src="js/matomo.js"></script><script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="js/html2pdf.bundle.min.js"></script>
+    <script>
+        function updateUrlBar() {
+            var domain = document.getElementById('domain-input').value;
+            if (domain) {
+                history.pushState(null, '', '?domain=' + encodeURIComponent(domain));
+            }
+        }
+
+        function exportToPdf() {
+    const domain = document.getElementById('domain-input').value;
+    const scanTimeElement = document.getElementById('scan-time');
+    let scanDateTime = '';
+    
+    if (scanTimeElement) {
+        const scanTime = new Date(scanTimeElement.getAttribute('data-server-time'));
+        scanDateTime = scanTime.toISOString().slice(0,19).replace(/[-:]/g, "").replace("T", "_");
+    } else {
+        // Fallback to current time if scan time is not available
+        scanDateTime = new Date().toISOString().slice(0,19).replace(/[-:]/g, "").replace("T", "_");
+    }
+    
+    const filename = domain ? `${domain}_${scanDateTime}.pdf` : `scan_results_${scanDateTime}.pdf`;
+    const element = document.getElementById('scan-results');
+    html2pdf().from(element).save(filename);
+}
+
+        function updateScanTime() {
+    const scanTimeElement = document.getElementById('scan-time');
+    if (scanTimeElement) {
+        const serverTime = scanTimeElement.getAttribute('data-server-time');
+        const localTime = new Date(serverTime).toLocaleString();
+        scanTimeElement.textContent = localTime;
+    }
+}
+
+  // Call updateScanTime when the page loads
+  window.onload = updateScanTime;
+
+    </script>
+     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "InternetSecure.org",
+      "url": "https://internetsecure.org",
+      "description": "Comprehensive website security scanning and protection services.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://internetsecure.org/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//stats.internetsecure.org/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="04bfc00c-3ade-4638-8c41-a9cb001b8e36";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script><script src="js/l.js" async=""></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
+
+                <div style="text-align: right;"> 
+
+            <a href="/account/register.php" class="float-left text-blue-500 hover:text-blue-700">
+            <i data-feather="user-plus" class="float-left w-4 h-4 mr-2 inline-block"></i> Register
+        </a>
+        <a href="/account/login.php" class="text-blue-500 hover:text-blue-700 mr-4">
+            <i data-feather="log-in" class="w-4 h-4 mr-2 inline-block"></i> Login
+        </a>
+        
+        </div>
+                
+        <h1 class="text-2xl font-bold mb-6 text-center"><a href="/">Domain Security Compliance Scanner</a></h1>
+
+        <form method="GET" class="mb-6" onsubmit="return validateDomain(); updateUrlBar()">
+    <div class="flex items-center">
+        <span class="bg-green-400 p-2 rounded-l-md border border-r-0">https://</span>
+        <input type="text" id="domain-input" name="domain" required="" placeholder="Enter domain (e.g., example.com)" class="flex-grow p-2 border rounded-r-md" value="skit.ac.in">
+    </div>
+    <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded mt-4 hover:bg-blue-600">Scan Website</button> 
+</form>
+
+<script>
+function validateDomain() {
+    const domainInput = document.getElementById('domain-input');
+    // Updated regex to allow for subdomains
+    const domainRegex = /^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/; 
+
+    if (!domainRegex.test(domainInput.value)) {
+        alert("Please enter a valid domain name.");
+        return false; // Prevent form submission
+    }
+
+    return true; // Allow form submission
+}
+</script>
+        
+                    <div class="mt-8" id="scan-results">
+            <div class="flex justify-between items-center flex-wrap gap-6 mb-4">
+    <div>
+        <h2 class="text-xl font-semibold">Scan Results for skit.ac.in</h2>
+        <p class="text-sm text-gray-500 mt-1">
+            <span id="scan-time" data-server-time="2024-11-21T06:04:01+00:00">11/21/2024, 7:04:01 AM</span>
+        </p>
+        <a href="help.php" target="_blank" rel="noopener noreferrer" class="bg-blue-100 text-blue-700 hover:bg-blue-200 px-4 py-2 rounded-full mt-4 inline-flex items-center transition duration-300 ease-in-out shadow-sm">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <span class="font-medium">Understanding Our Security Checks</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+    </svg>
+</a>
+    </div>
+    <div class="flex space-x-2">
+        <button onclick="copyUrl()" id="copy-button" class="bg-blue-500 text-white px-4 py-2 rounded flex items-center hover:bg-blue-600">
+            <i data-feather="copy" class="mr-2"></i>
+            Link
+        </button>
+        <button onclick="exportToPdf()" class="bg-green-500 text-white px-4 py-2 rounded flex items-center hover:bg-green-600">
+            <i data-feather="file-text" class="mr-2"></i>
+            PDF
+        </button>
+    </div>
+</div>
+
+<script>
+function copyUrl() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        const copyButton = document.getElementById('copy-button');
+        const originalHTML = copyButton.innerHTML;
+        copyButton.innerHTML = '<i data-feather="check" class="mr-2"></i>Copied!';
+        feather.replace();
+        setTimeout(() => {
+            copyButton.innerHTML = originalHTML;
+            feather.replace();
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+
+// Add this to your existing window.onload function or create one if it doesn't exist
+window.onload = function() {
+    updateScanTime();
+    feather.replace();
+};
+</script>
+                        <div class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-100 p-4 rounded">
+                        <h3 class="font-bold text-lg mb-2">SSL:</h3>
+                        <div class="flex items-center">
+                                                <i data-feather="lock" class="text-green-500 mr-2"></i>
+                        <span>Valid SSL</span>
+                        </div>
+                        <p class="mt-2">
+    Expiration: 2025-01-12            (52 days remaining)
+    </p>
+    <p class="mt-2">Issuer: Google Trust Services</p>
+    <p class="mt-2">Authority: WE1</p>
+                        <p></p>
+                                                    <a href="data:application/x-pem-file;charset=utf-8,-----BEGIN+CERTIFICATE-----%0AMIIDoTCCA0egAwIBAgIQbGSwZCPtp2cNziUJOzXJ%2BzAKBggqhkjOPQQDAjA7MQsw%0ACQYDVQQGEwJVUzEeMBwGA1UEChMVR29vZ2xlIFRydXN0IFNlcnZpY2VzMQwwCgYD%0AVQQDEwNXRTEwHhcNMjQxMDE0MTgyNDMwWhcNMjUwMTEyMTgyNDI5WjAVMRMwEQYD%0AVQQDEwpza2l0LmFjLmluMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEGGr6V8hD%0AlIAVUeBReaz0uyg1samz%2F0k5JI%2F1X3nU5gJpkBCcrCUtXTszM02q5c%2F3KzghMTJU%0A0qzm7m71754P2qOCAlEwggJNMA4GA1UdDwEB%2FwQEAwIHgDATBgNVHSUEDDAKBggr%0ABgEFBQcDATAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBTvaq1IhRqYbiWCIS%2FE4Jkb%0ApBKohDAfBgNVHSMEGDAWgBSQd5I1Z8T%2FqMyp5nvZgHl7zJP5ODBeBggrBgEFBQcB%0AAQRSMFAwJwYIKwYBBQUHMAGGG2h0dHA6Ly9vLnBraS5nb29nL3Mvd2UxL2JHUTAl%0ABggrBgEFBQcwAoYZaHR0cDovL2kucGtpLmdvb2cvd2UxLmNydDAjBgNVHREEHDAa%0Aggpza2l0LmFjLmluggwqLnNraXQuYWMuaW4wEwYDVR0gBAwwCjAIBgZngQwBAgEw%0ANgYDVR0fBC8wLTAroCmgJ4YlaHR0cDovL2MucGtpLmdvb2cvd2UxL1hXUGt5UVh2%0ASG1RLmNybDCCAQQGCisGAQQB1nkCBAIEgfUEgfIA8AB2AE51oydcmhDDOFts1N8%2F%0AUusd8OCOG41pwLH6ZLFimjnfAAABkox9PpEAAAQDAEcwRQIhAIbik2piDSa8ypLF%0AeYCAl24aBEqf9sh4pl6AYpfjgq%2FhAiA7L1dp4chC46MBo6hEqqQS%2FaaTcuLyDt4f%0Ar5t4Ka%2B8SwB2AD8XS0%2FXIkdYlB1lHIS%2BDRLtkDd%2FH4Vq68G%2FKIXs%2BGRuAAABkox9%0APp8AAAQDAEcwRQIhAN9BRgpbY7KbheakhytGSVWPcD0BC2IR4CBUQMrZQiCrAiB7%0AtbIqWpcqvOxwhDoc25KilzVzv3AOv%2BbSfGXhxVZCuDAKBggqhkjOPQQDAgNIADBF%0AAiBKHXKVU2Ap6RtHju1Jh%2FOmXnIcIMKWunq5TwbEFiuXhwIhAJFEhpYELxAH6VXH%0A9whzshAOKgfKBVmARFXnaYchBThh%0A-----END+CERTIFICATE-----%0A" download="skit.ac.in_certificate.pem" class="bg-green-500 text-white px-4 py-2 rounded inline-flex items-center hover:bg-green-600 mt-2 text-sm">
+    <i data-feather="download" class="mr-2 h-4 w-4"></i>
+    Download Certificate
+</a>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">TLS Configuration:</h3>
+    <div class="flex items-center">
+                <i data-feather="lock" class="text-green-500 mr-2"></i>
+        <span>Strength: Strong</span>
+    </div>
+    <div class="mt-2">
+        <p>Version: TLSv1.3</p>
+        <p>Cipher: TLS_AES_256_GCM_SHA384</p>
+    </div>
+    <p class="mt-2 text-sm text-green-500">
+        TLS (Transport Layer Security) encrypts data in transit, protecting against eavesdropping and tampering. Strong TLS configurations use up-to-date protocols and ciphers to ensure the highest level of security.
+    </p>
+</div>
+    </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">Content Security Policy (CSP):</h3>
+    <div class="flex items-center">
+                <i data-feather="alert-triangle" class="text-yellow-500 mr-2"></i>
+        <span>Not implemented</span>
+    </div>
+    <p class="mt-2 text-sm text-yellow-600">
+                    CSP prevents XSS and data injection attacks by specifying allowed content sources, reducing malicious code execution risks. Consider implementing it for enhanced security.
+            </p>
+</div>
+                
+<div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">X-Frame-Options:</h3>
+    <div class="flex items-center">
+                <i data-feather="unlock" class="text-red-500 mr-2"></i>
+        <span>Not protected against clickjacking</span>
+    </div>
+    <p class="mt-2 text-sm text-red-600">
+                    X-Frame-Options header is missing. This header prevents clickjacking by controlling page rendering in frames. Without it, malicious sites could embed your page, potentially tricking users into unwanted actions.
+            </p>
+</div>
+
+                
+<div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">HTTP Strict Transport Security (HSTS):</h3>
+    <div class="flex items-center">
+                <i data-feather="alert-triangle" class="text-yellow-500 mr-2"></i>
+        <span>Not implemented</span>
+    </div>
+    <p class="mt-2 text-sm text-yellow-600">
+    HSTS forces browsers to use HTTPS, preventing downgrade attacks and cookie hijacking.
+    </p>
+</div>
+                
+                <div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">Cookie Security:</h3>
+    <div class="flex items-center mb-2">
+                <i data-feather="lock" class="text-green-500 mr-2"></i>
+        <span>All cookies are secure</span>
+    </div>
+    </div>
+                
+<div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">Mixed Content:</h3>
+    <div class="flex items-center">
+                <i data-feather="lock" class="text-green-500 mr-2"></i>
+        <span>No mixed content detected</span>
+    </div>
+    <p class="mt-2 text-sm text-green-500">
+    Mixed content (HTTP resources on HTTPS pages) poses security risks, enabling potential attacks and content injection. Modern browsers may block it, breaking site functionality.
+    </p>
+</div>
+                
+                <div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">Web Application Firewall (WAF):</h3>
+    <div class="flex items-center">
+                <i data-feather="shield" class="text-green-500 mr-2"></i>
+        <span>
+            WAF detected: Cloudflare        </span>
+    </div>
+            <p class="mt-2 text-sm text-green-600">A WAF provides an additional layer of security for your website. Ensure it's properly configured and regularly updated for optimal protection.</p>
+    </div>
+                
+<div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">HTTP Security Headers:</h3>
+    <div class="flex items-center mb-4">
+                <i data-feather="key" class="text-yellow-500 mr-2"></i>
+        <span>Security Headers Score: 25/100</span>
+    </div>
+        <div class="mb-3">
+        <div class="flex items-center">
+            <i data-feather="x" class="text-red-500 w-4 h-4 mr-2"></i>
+            <span class="font-semibold">X-XSS-Protection</span>
+        </div>
+        <p class="mt-1 ml-6 text-xs text-gray-600">Helps prevent XSS attacks in older browsers.</p>
+    </div>
+        <div class="mb-3">
+        <div class="flex items-center">
+            <i data-feather="check" class="text-green-500 w-4 h-4 mr-2"></i>
+            <span class="font-semibold">X-Content-Type-Options</span>
+        </div>
+        <p class="mt-1 ml-6 text-xs text-gray-600">Prevents MIME type sniffing.</p>
+    </div>
+        <div class="mb-3">
+        <div class="flex items-center">
+            <i data-feather="x" class="text-red-500 w-4 h-4 mr-2"></i>
+            <span class="font-semibold">Referrer-Policy</span>
+        </div>
+        <p class="mt-1 ml-6 text-xs text-gray-600">Controls the Referer header for outgoing requests.</p>
+    </div>
+        <div class="mb-3">
+        <div class="flex items-center">
+            <i data-feather="x" class="text-red-500 w-4 h-4 mr-2"></i>
+            <span class="font-semibold">Permissions-Policy</span>
+        </div>
+        <p class="mt-1 ml-6 text-xs text-gray-600">Controls which browser features and APIs can be used.</p>
+    </div>
+    
+
+</div>
+
+<div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">Server Version:</h3>
+    <div class="flex items-center">
+                    <i data-feather="alert-triangle" class="text-yellow-500 mr-2"></i>
+            <span>cloudflare
+</span>
+            </div>
+            <p class="mt-2 text-sm text-yellow-600">In theory you want to hide your software or version but not all announcements are bad.</p>
+    </div>
+
+            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">DNSSEC:</h3>
+    <div class="flex items-center">
+                <i data-feather="globe" class="text-green-500 mr-2"></i>
+        <span>DNSSEC enabled</span>
+    </div>
+            <p class="mt-2 text-sm text-green-600">DNSSEC adds a layer of trust to your domain name. It helps prevent DNS spoofing and cache poisoning attacks.</p>
+    </div>
+                    <div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">Nameservers:</h3>
+            <ul class="list-disc list-inside">
+                            <li>
+                    alla.ns.cloudflare.com 
+                    (172.64.32.62)
+                </li>
+                            <li>
+                    jason.ns.cloudflare.com 
+                    (173.245.59.179)
+                </li>
+                    </ul>
+            </div>
+<div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">DMARC:</h3>
+    <div class="flex items-center">
+                <i data-feather="mail" class="text-green-500 mr-2"></i>
+        <span>DMARC record found</span>
+    </div>
+    <p class="mt-2 text-sm text-green-600">
+        DMARC helps prevent email spoofing and protects your domain from unauthorized use in phishing attacks.
+    </p>
+</div>
+
+<div class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold text-lg mb-2">DKIM:</h3>
+    <div class="flex items-center">
+                <i data-feather="mail" class="text-green-500 mr-2"></i>
+        <span>DKIM record found (selector: default)</span>
+    </div>
+    <p class="mt-2 text-sm text-green-600"> 
+        DKIM adds a digital signature to emails, verifying that they were sent by an authorized sender and weren't altered in transit.
+    </p>
+</div>
+
+              
+            </div>
+                    </div>
+        <br>
+        <center>
+  <a href="/cdn-cgi/l/email-protection#21525451514e535561484f5544534f44555244425453440f4e53461e5254434b4442551c72444254534855580413117242404f041260041311524a48550f40420f484f" class="bg-blue-500 text-white px-2 py-1 text-xs rounded inline-flex items-center justify-center hover:bg-blue-600 transition duration-300 ease-in-out">
+    <i data-feather="mail" class="w-3 h-3 mr-1"></i>
+    Help
+  </a>
+</center>
+            </div>
+
+    <script data-cfasync="false" src="js/email-decode.min.js"></script><script>
+      feather.replace()
+    </script>
+
+</div></body></html>
